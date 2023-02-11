@@ -3,6 +3,7 @@
 //   constructor() {
 //     this.name = name;
 //     this.refs = refs;
+import { refs } from './refs.js';
 
 import { Notify } from 'notiflix';
 
@@ -12,17 +13,17 @@ export function fetchCountries(name) {
     `https://restcountries.com/v3.1/name/${name}?fullText=false&fields=languages,flags,population,capital,name`
   )
     .then(response => {
-      if (!response.ok) {
-        throw new Error(
-          Notify.failure('Oops, there is no country with that name')
-        );
+      if (response.ok || refs.searchQuery.value === '') {
+        return response.json();
+      } else if (!response.ok) {
+        throw new Error('');
       }
-      return response.json();
     })
-    .catch(error => {
-      console.log(error);
+    .catch(() => {
+      Notify.failure('Oops, there is no country with that name');
     });
 }
+
 //   get name() {
 //     return this.name;
 //   }
