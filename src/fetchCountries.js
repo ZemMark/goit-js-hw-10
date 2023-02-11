@@ -12,7 +12,7 @@ export function fetchCountries(name) {
     `https://restcountries.com/v3.1/name/${name}?fullText=false&fields=languages,flags,population,capital,name`
   )
     .then(response => {
-      if (!response.ok && query !== '') {
+      if (!response.ok) {
         throw new Error(
           Notify.failure('Oops, there is no country with that name')
         );

@@ -25,11 +25,11 @@ function onSearchInput(e) {
 function renderCard(countries) {
   if (countries.length === 1) {
     const markup = countries.map(country => {
-      return `<div><img src="${country.flags.svg}" width="320"><h1>${
-        country.name.official
-      }</h1></div>
-        <p>${Object.values(country.languages)}</p>
-        <p>${country.population}</p>`;
+      return `<ul class="list">
+      <li><img class="flag" src="${country.flags.svg}"></li>
+      <li><h1>${country.name.official}</h1></li></ul>
+        <p>Languages: ${Object.values(country.languages)}</p>
+        <p>Population: ${country.population}</p>`;
     });
     refs.container.innerHTML = '';
     refs.countryCard.innerHTML = markup;
@@ -44,8 +44,8 @@ function renderCard(countries) {
     .map(country => {
       return `
         <li class="list-item">
-          <img src="${country.flags.svg}" width="40">
-          <h1>${country.name.official}</h1>
+          <img class="flag-mini" src="${country.flags.svg}">
+          <h1 class="title-list">${country.name.official}</h1>
         </li>`;
     })
     .join('');

@@ -11,6 +11,12 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center
+}
 
 #search-box {
   font: inherit;
@@ -21,8 +27,31 @@ body {
 
 .list-item{
   display: flex;
+  align-items: center;
+}
+.list-item img{
+  margin-right: 10px;
 }
 .country-list{
   list-style: none;
 }
+.list{
+  display: flex;
+}
+.list > li+li{
+  margin-right: 10px;
+}
+
+.flag{
+  width: 60px;
+  height: 40px;
+}
+.title-list{
+  font-size: large;
+}
+.flag-mini{
+  width: 40px;
+  height: 20px;
+}
+
 
