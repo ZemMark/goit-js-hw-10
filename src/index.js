@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './fetchCountries.js';
 import debounce from 'lodash.debounce';
 import CountriesAPI from './fetchCountries';
-export default refs = {
+const refs = {
   searchQuery: document.querySelector('#search-box'),
   container: document.querySelector('.country-list'),
   countryCard: document.querySelector('.country-info'),
