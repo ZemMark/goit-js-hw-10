@@ -20,7 +20,7 @@ export function fetchCountries(name) {
       return response.json();
     })
     .catch(error => {
-      return error;
+      console.log(error);
     });
 }
 //   get name() {

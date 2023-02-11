@@ -17,7 +17,7 @@ refs.searchQuery.addEventListener(
 );
 // const countriesAPI = new CountriesAPI();
 function onSearchInput(e) {
-  query = e.target.value.trim();
+  const query = e.target.value.trim();
   setLocalStorage(query);
   fetchCountries(query).then(renderCard);
 }
@@ -40,18 +40,16 @@ function renderCard(countries) {
     return;
   }
   refs.countryCard.innerHTML = '';
-  if (query !== '') {
-    const markup2 = countries
-      .map(country => {
-        return `
+  const markup2 = countries
+    .map(country => {
+      return `
         <li class="list-item">
           <img src="${country.flags.svg}" width="40">
           <h1>${country.name.official}</h1>
         </li>`;
-      })
-      .join('');
-    refs.container.innerHTML = markup2;
-  }
+    })
+    .join('');
+  refs.container.innerHTML = markup2;
 }
 
 function setLocalStorage(query) {
