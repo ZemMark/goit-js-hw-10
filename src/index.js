@@ -19,7 +19,12 @@ function onSearchInput(e) {
   if (!query) {
     return;
   }
-  fetchCountries(query).then(renderCard);
+  fetchCountries(query)
+    .then(renderCard)
+    .catch(error => {
+      console.log(error);
+      Notify.failure('Es gibt keiner solcher Land');
+    });
 }
 
 function renderCard(countries) {

@@ -11,22 +11,12 @@ import { Notify } from 'notiflix';
 export function fetchCountries(name) {
   return fetch(
     `https://restcountries.com/v3.1/name/${name}?fullText=false&fields=languages,flags,population,capital,name`
-  )
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else if (refs.searchQuery.value === '') {
-        refs.container.innerHTML = '';
-        refs.countryCard.innerHTML = '';
-        return;
-      } else if (!response.ok) {
-        Notify.failure('Oops, there is no country with that name');
-        throw new Error('');
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
 }
 
 //   get name() {
