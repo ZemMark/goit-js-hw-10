@@ -13,14 +13,19 @@ export function fetchCountries(name) {
     `https://restcountries.com/v3.1/name/${name}?fullText=false&fields=languages,flags,population,capital,name`
   )
     .then(response => {
-      if (response.ok || refs.searchQuery.value === '') {
+      if (response.ok) {
         return response.json();
+      } else if (refs.searchQuery.value === '') {
+        refs.container.innerHTML = '';
+        refs.countryCard.innerHTML = '';
+        return;
       } else if (!response.ok) {
+        Notify.failure('Oops, there is no country with that name');
         throw new Error('');
       }
     })
-    .catch(() => {
-      Notify.failure('Oops, there is no country with that name');
+    .catch(error => {
+      console.log(error);
     });
 }
 
